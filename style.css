@@ -1,5 +1,6 @@
 ul {
-	min-height: 50px;
+	height: 160px;
+	overflow: auto;
 }
 
 .command {

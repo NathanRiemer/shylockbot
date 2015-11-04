@@ -10,6 +10,7 @@ var addLI = function(liText, liClass) {
 	$newLI.text(liText);
 	$newLI.addClass(liClass);
 	$log.append($newLI);
+	$log.scrollTop($log.prop('scrollHeight'));
 };
 
 var parsePrompt = function(promptText) {
@@ -72,6 +73,9 @@ var parsePrompt = function(promptText) {
 			var response = 'Shylock adjusts his interest rate from ' + interestRate + '% to ' + newInterestrate + '%';
 			addLI(response, 'action');
 			interestRate = newInterestrate;
+			break;
+		case 'antisemitism':
+			addLI('Most definitely', 'quote');
 			break;
 		default:
 			break;
