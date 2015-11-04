@@ -1,7 +1,8 @@
 var $prompt = $('#prompt');
 var $log = $('#log');
 var purse = 10000;
-var loans = {};
+var ledger = {};
+var interestRate = 50;
 
 
 var addLI = function(liText, liClass) {
@@ -28,10 +29,10 @@ var parsePrompt = function(promptText) {
 		case 'loan':
 			var person = promptArray[1];
 			var amount = parseInt(promptArray[2]);
-			if (loans[person]) {
-				loans[person] += amount;
+			if (ledger[person]) {
+				ledger[person] += amount;
 			} else {
-				loans[person] = amount;
+				ledger[person] = amount;
 			}
 			purse -= amount;
 			var response = 'ShylockBot gives ' + person + ' ' + amount + ' ducats';
@@ -40,12 +41,30 @@ var parsePrompt = function(promptText) {
 
 		case 'ledger':
 			addLI('ShylockBot pulls out his ledger', 'action');
-			for (var person in loans) {
-				var line = person + ' owes me ' + loans[person] + ' ducats';
+			for (var person in ledger) {
+				var line = person + ' owes me ' + ledger[person] + ' ducats';
 				addLI(line, 'quote');
 			}
 			break;
 
+		case 'collect':
+			if (promptArray[1] === 'interest') {
+				var response = 'ShylockBot collects interest at ' + interestRate + '%';
+				addLI(response, 'action');
+				for (var person in ledger) {
+					ledger[person] *= ((100 +interestRate) / 100);
+					var line = person + ' now owes me ' + ledger[person] + ' ducats';
+					addLI(line, 'quote');
+				}
+			}
+			break;
+
+		case 'set':
+			var newInterestrate = parseInt(promptArray[3]);
+			var response = 'Shylock adjusts his interest rate from ' + interestRate + '% to ' + newInterestrate + '%';
+			addLI(response, 'action');
+			interestRate = newInterestrate;
+			break;
 		default:
 			break;
 	}
