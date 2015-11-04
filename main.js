@@ -56,6 +56,14 @@ var parsePrompt = function(promptText) {
 					var line = person + ' now owes me ' + ledger[person] + ' ducats';
 					addLI(line, 'quote');
 				}
+			} else {
+				var amount = parseInt(promptArray[1]);
+				var person = promptArray[4];
+				if (ledger[person]) {
+					addLI('ShylockBot opens his purse', 'action');
+					ledger[person] -= amount;
+					purse += amount;
+				}
 			}
 			break;
 
