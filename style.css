@@ -1,16 +1,28 @@
+body {
+	background-image: url('shylock-image.jpg');
+	background-position: right;
+	background-repeat: no-repeat;
+	background-color: rgb(204, 255, 255);
+}
+
 ul {
 	height: 160px;
 	overflow: auto;
 }
 
 .command {
-	background-color: lightgrey;
+	background-color: rgba(0, 204, 0, .5);
+	font-family: Courier;
+	list-style: square;
 }
 
 .action {
 	font-style: italic;
+	list-style: none;
 }
 
 .quote {
-	background-color: pink;	
+	background-color: rgba(255, 204, 153, .5);	
+	font-family: 'Book Antiqua';
+	list-style: none;
 }
