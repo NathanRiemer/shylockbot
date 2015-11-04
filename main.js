@@ -3,6 +3,11 @@ var $log;
 var purse = 10000;
 var ledger = {};
 var interestRate = 50;
+// var shylock = {
+// 	purse: 10000,
+// 	ledger: {},
+// 	interestRate: 50
+// };
 
 
 var addLI = function(liText, liClass) {
