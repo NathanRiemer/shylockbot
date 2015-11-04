@@ -1,5 +1,5 @@
-var $prompt = $('#prompt');
-var $log = $('#log');
+var $prompt;
+var $log;
 var purse = 10000;
 var ledger = {};
 var interestRate = 50;
@@ -92,4 +92,11 @@ var enterPrompt = function(event) {
 	parsePrompt(promptText);
 };
 
-$prompt.on('keypress', enterPrompt);
+// $prompt.on('keypress', enterPrompt);
+
+$(document).ready(function() {
+	$prompt = $('#prompt');
+	$log = $('#log');
+
+	$prompt.on('keypress', enterPrompt);
+});
