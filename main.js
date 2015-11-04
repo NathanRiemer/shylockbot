@@ -24,6 +24,7 @@ var parsePrompt = function(promptText) {
 			var response = 'ShylockBot pulls out his purse containing ' + purse + ' ducats';
 			addLI(response, 'action');
 			break;
+
 		case 'loan':
 			var person = promptArray[1];
 			var amount = parseInt(promptArray[2]);
@@ -33,9 +34,18 @@ var parsePrompt = function(promptText) {
 				loans[person] = amount;
 			}
 			purse -= amount;
-			console.log(loans);
 			var response = 'ShylockBot gives ' + person + ' ' + amount + ' ducats';
 			addLI(response, 'action');
+			break;
+
+		case 'ledger':
+			addLI('ShylockBot pulls out his ledger', 'action');
+			for (var person in loans) {
+				var line = person + ' owes me ' + loans[person] + ' ducats';
+				addLI(line, 'quote');
+			}
+			break;
+
 		default:
 			break;
 	}
@@ -46,7 +56,7 @@ var enterPrompt = function(event) {
 		return;
 	}
 	var promptText = $prompt.val();
-	addLI(promptText, 'prompt');
+	addLI(promptText, 'command');
 	$prompt.val('');
 	parsePrompt(promptText);
 };

@@ -3,7 +3,7 @@ ul {
 }
 
 .command {
-	background-color: grey;
+	background-color: lightgrey;
 }
 
 .action {
@@ -11,5 +11,5 @@ ul {
 }
 
 .quote {
-	
+	background-color: pink;	
 }
