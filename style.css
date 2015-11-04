@@ -1,0 +1,15 @@
+ul {
+	min-height: 50px;
+}
+
+.command {
+	background-color: grey;
+}
+
+.action {
+	font-style: italic;
+}
+
+.quote {
+	
+}
